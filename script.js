@@ -1,17 +1,20 @@
 (function(window) {
- 
-  if (typeof helloSpeaker === 'undefined') {
-    console.error('helloSpeaker not defined!');
-    return;
+  var names = ["Bill", "John", "Jen", "Jason", "Paul", "Frank", "Steven", "Larry", "Paula", "Laura", "Jim"];
+
+  function selectNamesByLength(names, lengthThreshold) {
+    return names.filter(function(name) {
+      return name.length >= lengthThreshold;
+    });
   }
 
- 
-  if (typeof goodbyeSpeaker === 'undefined') {
-    console.error('goodbyeSpeaker not defined!');
-    return;
+  function displaySelectedNames(selectedNames, criteria) {
+    console.log(`Selected names (${criteria}):`);
+    selectedNames.forEach(function(name) {
+      console.log(name);
+    });
   }
 
-
+  // Original functionality
   for (var i = 0; i < names.length; i++) {
     var currentName = names[i];
 
@@ -22,23 +25,9 @@
     }
   }
 
- 
-  var lengthThreshold = 5; 
+  // New functionality based on name length
+  var lengthThreshold = 5; // Change this threshold as needed
   var selectedNames = selectNamesByLength(names, lengthThreshold);
   displaySelectedNames(selectedNames, `Length >= ${lengthThreshold}`);
-
-  // Функція для вибору імен за довжиною
-  function selectNamesByLength(names, lengthThreshold) {
-    return names.filter(function(name) {
-      return name.length >= lengthThreshold;
-    });
-  }
-
-  // Функція для виведення вибраних імен у консоль
-  function displaySelectedNames(selectedNames, criteria) {
-    console.log(`Selected names (${criteria}):`);
-    selectedNames.forEach(function(name) {
-      console.log(name);
-    });
-  }
 })(window);
+
